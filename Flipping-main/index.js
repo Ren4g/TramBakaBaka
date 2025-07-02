@@ -162,7 +162,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const frontSide = document.createElement('div');
                 frontSide.className = 'front';
                 const frontImage = new Image();
-                frontImage.src = preloadedImages[`${basePath}/IMG_1451-min.PNG`].src;
+                frontImage.style.display = 'none'; 
+
                 frontSide.appendChild(frontImage);
                 
                   
@@ -188,8 +189,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         isFlipping = true;
                         
                           
-                        frontImage.src = preloadedImages[`${basePath}/IMG_145${nextImageIndex}-min.PNG`].src;
+                        const imageKey = `${basePath}/IMG_145${nextImageIndex}-min.PNG`;
+                        const preloadedImg = preloadedImages[imageKey];
                         
+                        
+                        frontSide.removeChild(frontImage);
+                        frontSide.appendChild(preloadedImg.cloneNode());                        
                           
                         card.classList.add('flipped');
                         
